@@ -14,34 +14,81 @@ body {
 
 /* style chama */
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-#navbar{
+#navbar {
     background-image: url(pics/bacterie.svg);
 }
-.container-fluid ul li a{
+
+.container-fluid ul li a {
     text-decoration: none;
 }
-#info{
+
+#info {
     background-color: #f1c40f;
     padding: 3% 10%;
 }
-.start{
+
+.start {
     display: flex;
     justify-content: center;
     margin: 25px 0;
 }
-.start input{
-    background-color: #1078AD; 
+
+.start input {
+    background-color: #1078AD;
     border: none;
     width: 500px;
     height: 8vh;
     border-radius: 10px;
 }
 
+
 /* style chama ends */
 
+
+/* style karima survey first section */
+
+.one {
+    background-color: #96C5DC;
+    box-shadow: 0px 0px 3px black;
+    height: 800px;
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.form-signin {
+    max-width: 90%;
+    margin: auto;
+}
+
+.btn {
+    margin-top: 30px;
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.langue {
+    margin-right: 20px;
+}
+
+#ul li {
+    list-style: none;
+    margin-right: 30px;
+}
+
+#ul li a {
+    text-decoration: none;
+}
+
+
+/* style karima survey first section ends */
