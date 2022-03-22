@@ -14,44 +14,48 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-light" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-5" style="color: #1078AD;">LOGO</a>
-                <form class="d-flex">
-                    <ul class="d-flex justify-content-between">
-                        <li class="me-5"><a href="conseils.html">Conseils</a></li>
-                        <li class="me-5"><a href="accueil.html" class="fw-bold" style="color: #1078AD;">Accueil</a></li>
-                    </ul>
-                </form>
-            </div>
-        </nav>
-        <div class="info">
-            <h1 style="color: #1078AD; font-size: 25px; font-weight: bold;">LA DERNIÈRE INFO MÉDICALE</h1>
-            <p class="text-center">La prise d'anti-inflammatoires (ibuprofène, cortisone ...) pourrait être un facteur
-                d'aggravation de l’infection. En cas de fièvre, prenez du paracétamol N'arrêtez pas votre traitement !
-                Consultez votre médecin ou votre pharmacien.</p>
+<body class="d-flex w-100 h-auto">
+    <div class="container-fluid-xl">
+    <nav class="navbar navbar-light" id="navbar">
+        <div class="container-fluid px-0">
+            <img class="ms-5" style="width: 50PX;" src="pics/sante.svg" alt="logo">
+          <form class="d-flex">
+            <ul class="d-flex justify-content-between" style="list-style: none; vertical-align: middle;">
+                <li class="me-5"><a href="conseils.html" class="text-black">Conseils</a></li>
+                <li class="me-5"><a href="accueil.html" class="fw-bold" style="color: #1078AD;">Accueil</a></li>
+            </ul>
+          </form>
         </div>
-        <div class="intro d-flex m-5">
-            <div class="ask">
-                <h1 class="text-center fw-bold" style="color: #1078AD; font-size: 25px;">Vous pensez avoir été exposé au
-                    Coronavirus COVID-19 et vous avez des symptômes ?</h1>
-                <img src="pics/sec.svg" alt="icon" class="sick">
-                <p class="text-center text-secondary fw-bold fs-3">Je reste vigilant ? <br>
-                    Je programme une téléconsultation ? <br>
-                    J'appelle le 141 ?<br>
-                    Faites le test pour répondre en citoyen éclairé selon vos symptômes.
-                </p>
-                <div class="start">
-                    <input type="button" class="fs-4 fw-bold text-white" value="Démarer le test">
+    </nav>
+    <div id="info" class="d-flex justify-content-center align-items-center flex-column">
+        <h1 class="fw-bold" style="color: #1078AD; font-size: 25px;">LA DERNIÈRE INFO MÉDICALE</h1>
+        <p class="text-center">La prise d'anti-inflammatoires (ibuprofène, cortisone ...) pourrait être un facteur d'aggravation de l’infection. En cas de fièvre, prenez du paracétamol N'arrêtez pas votre traitement ! Consultez votre médecin ou votre pharmacien.</p>
+    </div>
+    <div class="intro d-flex m-5">
+        <div class="d-flex align-items-center flex-column">
+            <div class="row">
+                <div class="col-xl-6">
+                    <h1 class="text-center fw-bold" style="color: #1078AD; font-size: 25px;">Vous pensez avoir été exposé au Coronavirus COVID-19 et vous avez des symptômes ?</h1>
+                    <img   src="pics/sec.svg" alt="icon" class="mx-auto d-block">
+                    <p class="text-center text-secondary fw-bold fs-3">Je reste vigilant ? <br>
+                        Je programme une téléconsultation ? <br>
+                        J'appelle le 141 ?<br>
+                        Faites le test pour répondre en citoyen éclairé selon vos symptômes.
+                    </p>
+                    <div class="start">
+                        <input type="button" class="fs-4 fw-bold text-white"  value="Démarer le test">
+                    </div>
                 </div>
+                <div class="col-xl-6">
+                    <div class="pic">
+                        <img src="pics/docs.png" alt="image" style="height: 70vh; width: 600px;">
+                    </div>
             </div>
-            <div class="pic">
-                <img src="pics/docs.png" alt="image" style="height: 70vh; width: 600px;">
-            </div>
+        </div>
         </div>
     </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>

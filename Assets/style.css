@@ -19,40 +19,21 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    display: flex;
-    width: 100%;   
-    height: auto;
-}
+
 #navbar{
     background-image: url(pics/bacterie.svg);
-    
-}
-.container-fluid{
-    padding-left: 0;
-    padding-right: 0;
-}
-.container-fluid ul li{
-    list-style: none;
 }
 .container-fluid ul li a{
-    color: black;
     text-decoration: none;
-
 }
-.info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#info{
     background-color: #f1c40f;
     padding: 3% 10%;
 }
-
-.ask{
+.start{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
 }
 .start input{
     background-color: #1078AD; 
@@ -60,7 +41,6 @@ body{
     width: 500px;
     height: 8vh;
     border-radius: 10px;
-    
 }
 
 /* style chama ends */
