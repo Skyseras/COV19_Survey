@@ -39,7 +39,7 @@ body {
     margin: 25px 0;
 }
 
-.start input {
+.start button {
     background-color: #1078AD;
     border: none;
     width: 500px;
