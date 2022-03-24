@@ -1,20 +1,7 @@
-/* * {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-} */
-
-
 /* style chama */
 
 * {
+    font-family: 'Cairo', 'Roboto', 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -29,8 +16,8 @@ body {
 }
 
 #info {
-    background-color: #f1c40f;
-    padding: 3% 10%;
+    background-color: #F4CF1B;
+    padding: 1% 10%;
 }
 
 .start {
@@ -39,12 +26,18 @@ body {
     margin: 25px 0;
 }
 
+.text-covid {
+    color: #1078AD;
+}
+
 .start button {
-    background-color: #1078AD;
-    border: none;
-    width: 500px;
-    height: 8vh;
+    background-color: #cae6f3;
+    border-width: 2px;
+    border-color: #1078AD;
+    border-style: solid;
     border-radius: 10px;
+    width: 520px;
+    height: 8vh;
 }
 
 
