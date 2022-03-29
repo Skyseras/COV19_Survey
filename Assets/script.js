@@ -298,7 +298,24 @@ function startSurvey() {
     document.getElementById("barval").style.width = "4.2%";
 }
 
+function next() {
+    // document.getElementById('errors').innerText = "";
+    if (questions[index].getAnswer()) {
+        index++;
+        if (index < questions.length) {
+            // document.getElementById('btnPrv').disabled = false;
+            document.getElementById("barnum").innerText = questions[index].number;
+            document.getElementById("barval").style.width = ((index + 1) * 4.2) + "%";
+            document.getElementById("title").innerText = questions[index].title;
+            generateForm(index);
+            if (index == questions.length - 1) {
+                resBtn.style.display = "block";
+                document.querySelector("#s1").style.display = "none";
+            }
 
+        }
+    }
+}
 
 
 document.getElementById("title").innerText = questions[index].title;
