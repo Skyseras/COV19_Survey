@@ -48,6 +48,49 @@ var questions = [
         }
     },
     {
+        title: "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?",
+        number: "9/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous vu apparaître une gêne respiratoire ou une augmentation de votre gêne respiratoire habituelle ? ",
+        number: "10/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Comment vous sentez-vous ?",
+        number: "11/24",
+        type: "radio",
+        options: ['Bien', 'Assez-bien', 'Mal', 'Très-mal'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous d’autre symptôme ?",
+        number: "12/24",
+        type: "text",
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.getElementById("answer").value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous une maladie chronique du foie ?",
         number: "21/24",
         type: "radio",
