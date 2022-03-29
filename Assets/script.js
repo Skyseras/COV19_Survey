@@ -271,7 +271,15 @@ function generateForm(index) {
                 }
             }
             break;
-
+            case "text":
+                {
+                    let input = document.createElement("input");
+                    input.type = 'text';
+                    input.id = 'answer';
+                    input.value = question.answer;
+                    form.appendChild(input);
+                }
+                break;
 
         default: break;
     }
