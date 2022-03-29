@@ -30,6 +30,10 @@
     color: #1078AD;
 }
 
+.border-covid {
+    border-color: #1078AD;
+}
+
 .start button {
     background-color: #cae6f3;
     border-width: 2px;
@@ -49,10 +53,8 @@
 .one {
     background-color: #96C5DC;
     box-shadow: 0px 0px 3px black;
-    height: 800px;
     border-radius: 15px;
-    margin-top: 50px;
-    padding: 20px;
+    padding: 50px 25px;
 }
 
 .form-signin {
@@ -60,8 +62,11 @@
     margin: auto;
 }
 
-.btn {
-    margin-top: 30px;
+.cercle {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: #F4CF1B;
 }
 
 .img {
