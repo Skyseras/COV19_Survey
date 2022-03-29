@@ -191,6 +191,17 @@ var questions = [{
         }
     },
     {
+        title: "Avez-vous de l’hypertension artérielle ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?",
+        number: "16/24",
+        type: "radio",
+        options: ['Oui', 'Non', 'Ne sait pas'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Êtes-vous diabétique ?",
         number: "17/24",
         type: "radio",
