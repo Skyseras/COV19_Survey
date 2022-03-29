@@ -54,6 +54,50 @@ var questions = [
         }
     },
     {
+        title: "Avez-vous un mal de gorge apparu ces derniers jours ?",
+        number: "5/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous de la diarrhée ces dernières 24 heures(au moins 3 selles molles) ?",
+        number: "6/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une fatigue inhabituelle ces derniers jours ?",
+        number: "7/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?",
+        number: "8/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?",
         number: "9/24",
         type: "radio",
@@ -205,8 +249,28 @@ function generateForm(index) {
 
     form.innerHTML = '';
     switch (question.type) {
+        case "radio":
+            {
 
+                for (let i = 0; i < question.options.length; i++) {
 
+                    let radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.id = "radio-" + i;
+                    radio.name = "answer";
+                    radio.value = question.options[i];
+                    const label = document.createElement('label');
+                    label.setAttribute("for", "radio-" + i);
+                    label.textContent = question.options[i];
+
+                    form.appendChild(radio);
+                    form.appendChild(label);
+                    if (question.options[i] == question.answer) {
+                        radio.checked = true;
+                    }
+                }
+            }
+            break;
 
 
         default: break;
