@@ -2,8 +2,7 @@ let resBtn = document.querySelector("#show-res-btn");
 resBtn.style.display = "none";
 var index = 0;
 
-var questions = [
-    {
+var questions = [{
         title: "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?",
         number: "1/24",
         type: "radio",
@@ -141,6 +140,23 @@ var questions = [
         }
     },
     {
+        title: "Quel est votre âge ?",
+        number: "13/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let age = document.getElementById("answer").value;
+            if (age > 15 && age < 110) {
+                this.answer = age;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ton age doit être entre 15 et 110";
+                return false;
+            }
+
+        }
+    },
+    {
         title: "Êtes-vous diabétique ?",
         number: "17/24",
         type: "radio",
@@ -271,17 +287,18 @@ function generateForm(index) {
                 }
             }
             break;
-            case "text":
-                {
-                    let input = document.createElement("input");
-                    input.type = 'text';
-                    input.id = 'answer';
-                    input.value = question.answer;
-                    form.appendChild(input);
-                }
-                break;
+        case "text":
+            {
+                let input = document.createElement("input");
+                input.type = 'text';
+                input.id = 'answer';
+                input.value = question.answer;
+                form.appendChild(input);
+            }
+            break;
 
-        default: break;
+        default:
+            break;
     }
 }
 
