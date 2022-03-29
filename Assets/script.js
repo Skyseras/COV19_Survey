@@ -97,6 +97,50 @@ var questions = [
         }
     },
     {
+        title: "Êtes-vous diabétique ?",
+        number: "17/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous ou avez-vous eu un cancer ?",
+        number: "18/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?",
+        number: "19/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une insuffisance rénale chronique dialysée ?",
+        number: "20/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous une maladie chronique du foie ?",
         number: "21/24",
         type: "radio",
@@ -142,7 +186,12 @@ var questions = [
     }
 ];
 
-
+function startSurvey() {
+    document.getElementById(0).style.display = 'none';
+    document.getElementById(1).style.display = 'block';
+    document.getElementById("barnum").innerText = questions[index].number;
+    document.getElementById("barval").style.width = "4.2%";
+}
 
 
 
