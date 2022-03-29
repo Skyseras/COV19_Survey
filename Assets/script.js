@@ -153,7 +153,28 @@ function generateForm(index) {
 
 
 
+        case "radio":
+            {
 
+                for (let i = 0; i < question.options.length; i++) {
+
+                    let radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.id = "radio-" + i;
+                    radio.name = "answer";
+                    radio.value = question.options[i];
+                    const label = document.createElement('label');
+                    label.setAttribute("for", "radio-" + i);
+                    label.textContent = question.options[i];
+
+                    form.appendChild(radio);
+                    form.appendChild(label);
+                    if (question.options[i] == question.answer) {
+                        radio.checked = true;
+                    }
+                }
+            }
+            break;
         default: break;
     }
 }
