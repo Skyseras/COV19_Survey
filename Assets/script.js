@@ -2,7 +2,52 @@ let resBtn = document.querySelector("#show-res-btn");
 resBtn.style.display = "none";
 var index = 0;
 
-var questions = [{
+var questions = [
+    {
+        title: "Avez-vous un mal de gorge apparu ces derniers jours ?",
+        number: "5/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous de la diarrhée ces dernières 24 heures(au moins 3 selles molles) ?",
+        number: "6/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une fatigue inhabituelle ces derniers jours ?",
+        number: "7/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?",
+        number: "8/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous une maladie chronique du foie ?",
         number: "21/24",
         type: "radio",
