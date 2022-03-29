@@ -2,8 +2,7 @@ let resBtn = document.querySelector("#show-res-btn");
 resBtn.style.display = "none";
 var index = 0;
 
-var questions = [
-    {
+var questions = [{
         title: "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?",
         number: "1/24",
         type: "radio",
@@ -156,11 +155,20 @@ function generateForm(index) {
 
     form.innerHTML = '';
     switch (question.type) {
+        case "number":
+            {
+                let input = document.createElement("input");
+                input.type = 'number';
+                input.id = 'answer';
+                input.value = question.answer;
+                form.appendChild(input);
+            }
+            break;
 
 
 
-
-        default: break;
+        default:
+            break;
     }
 }
 
