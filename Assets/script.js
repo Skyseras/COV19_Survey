@@ -4,6 +4,56 @@ var index = 0;
 
 var questions = [
     {
+        title: "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?",
+        number: "1/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Quelle est votre température ?",
+        number: "2/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let temp = document.getElementById("answer").value;
+            if (temp > 35 && temp < 39) {
+                this.answer = temp;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ta température doit être entre 35°C et 39°C";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?",
+        number: "3/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?",
+        number: "4/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?",
         number: "9/24",
         type: "radio",
