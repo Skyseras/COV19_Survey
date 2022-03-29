@@ -157,6 +157,51 @@ var questions = [{
         }
     },
     {
+        title: "Quel est votre poids ?",
+        number: "14/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let poid = document.getElementById("answer").value;
+            if (poid > 20 && poid < 250) {
+                this.answer = poid;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ton poids doit être entre 20 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Quelle est votre taille ?",
+        number: "15/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let taille = document.getElementById("answer").value;
+            if (taille > 80 && taille < 250) {
+                this.answer = taille;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ta taille doit être entre 80 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Avez-vous de l’hypertension artérielle ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?",
+        number: "16/24",
+        type: "radio",
+        options: ['Oui', 'Non', 'Ne sait pas'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Êtes-vous diabétique ?",
         number: "17/24",
         type: "radio",
@@ -253,7 +298,24 @@ function startSurvey() {
     document.getElementById("barval").style.width = "4.2%";
 }
 
+function next() {
+    // document.getElementById('errors').innerText = "";
+    if (questions[index].getAnswer()) {
+        index++;
+        if (index < questions.length) {
+            // document.getElementById('btnPrv').disabled = false;
+            document.getElementById("barnum").innerText = questions[index].number;
+            document.getElementById("barval").style.width = ((index + 1) * 4.2) + "%";
+            document.getElementById("title").innerText = questions[index].title;
+            generateForm(index);
+            if (index == questions.length - 1) {
+                resBtn.style.display = "block";
+                document.querySelector("#s1").style.display = "none";
+            }
 
+        }
+    }
+}
 
 
 document.getElementById("title").innerText = questions[index].title;
