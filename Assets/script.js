@@ -157,6 +157,23 @@ var questions = [{
         }
     },
     {
+        title: "Quel est votre poids ?",
+        number: "14/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let poid = document.getElementById("answer").value;
+            if (poid > 20 && poid < 250) {
+                this.answer = poid;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ton poids doit être entre 20 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
         title: "Êtes-vous diabétique ?",
         number: "17/24",
         type: "radio",
