@@ -174,6 +174,23 @@ var questions = [{
         }
     },
     {
+        title: "Quelle est votre taille ?",
+        number: "15/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let taille = document.getElementById("answer").value;
+            if (taille > 80 && taille < 250) {
+                this.answer = taille;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ta taille doit être entre 80 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
         title: "Êtes-vous diabétique ?",
         number: "17/24",
         type: "radio",
