@@ -501,7 +501,15 @@ const results = () => {
         }
     }
     //Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures :
-
+    else if ((fievre > 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer == 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer == 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer == 'Oui')) {
+        if (nonefacGrav > 0) {
+            document.getElementById("textresult").innerText = 'Votre santé est bonne.'
+            document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        } else if ((unfacGravmaj > 0 && unfacGravmin == 0 && sansfacpro > 0) || (unfacGravmaj == 0 && unfacGravmin > 0 && sansfacpro > 0) || (unfacGravmaj == 0 && unfacGravmin == 0 && sansfacpro == 0)) {
+            document.getElementById("textresult").innerText = 'Pas de covid-19.'
+            document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 141. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        }
+    }
     //Tout patient avec aucun symptôme :
     else if (nonefacGrav > 0 && sansfacpro > 0) {
         document.getElementById("textresult").innerText = 'Votre santé est bonne.'
