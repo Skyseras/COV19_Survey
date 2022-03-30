@@ -453,7 +453,11 @@ const results = () => {
 
 
 
-    //hatim
+    
+    if (age < 15) {
+        document.getElementById("textresult").innerText = 'Prenez contact avec votre médecin généraliste au moindre doute.'
+        document.getElementById("textresult2").innerText = 'Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+    }
 
     // Patient avec fièvre, ou toux + mal de gorge, ou toux + courbatures ou fièvre + diarrhée :
 
