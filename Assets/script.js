@@ -395,8 +395,31 @@ const results = () => {
     let sansfacpro = 0;
     let age = questions[13].answer;
 
-    // abdo
+    if (questions[1].answer >= 39 || questions[1].answer <= 35) {
+        fievre++;
+    }
 
+    if (questions[1].answer >= 39 || questions[7].answer == 'Oui' || questions[10].answer == ('Très-mal' || 'Mal')) {
+        facGravmin++;
+        if (questions[1].answer >= 39 && questions[7].answer != 'Oui' && questions[10].answer != ('Très-mal' || 'Mal') || questions[1].answer < 39 && questions[1].answer > 35 && questions[7].answer == 'Oui' && questions[10].answer != ('Très-mal' || 'Mal') || questions[1].answer < 39 && questions[1].answer > 35 && questions[7].answer != 'Oui' && questions[10].answer == ('Très-mal' || 'Mal')) {
+            unfacGravmin++;
+        } else {
+            deuxplusfacGravmin++;
+        }
+    } else if (questions[1].answer <= 35 || questions[8].answer == 'Oui' || questions[9].answer == 'Oui') {
+        facGravMaj++;
+        if (questions[1].answer <= 35 && questions[8].answer != 'Oui' && questions[9].answer != 'Oui' || questions[1].answer < 39 && questions[1].answer > 35 && questions[8].answer == 'Oui' && questions[9].answer != ('Très-mal' || 'Mal') || questions[1].answer < 39 && questions[1].answer > 35 && questions[8].answer != 'Oui' && questions[9].answer == 'Oui') {
+            unfacGravmaj++;
+        } else {
+            deuxplusfacGravmaj++;
+        }
+    } else {
+        nonefacGrav++;
+    }
+
+    if (questions[15].answer == 'Non' && questions[16].answer != 'Oui' && questions[17].answer != 'Oui' && questions[18].answer != 'Oui' && questions[19].answer != 'Oui' && questions[20].answer != 'Oui' && questions[21].answer != 'Oui' && questions[22].answer != 'Oui' && questions[23].answer != 'Oui') {
+        sansfacpro++;
+    }
 
 
 
