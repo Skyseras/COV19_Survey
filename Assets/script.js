@@ -53,6 +53,50 @@ var questions = [{
         }
     },
     {
+        title: "Avez-vous un mal de gorge apparu ces derniers jours ?",
+        number: "5/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous de la diarrhée ces dernières 24 heures(au moins 3 selles molles) ?",
+        number: "6/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une fatigue inhabituelle ces derniers jours ?",
+        number: "7/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?",
+        number: "8/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
         title: "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?",
         number: "9/24",
         type: "radio",
@@ -92,6 +136,112 @@ var questions = [{
         answer: null,
         getAnswer: function() {
             this.answer = document.getElementById("answer").value;
+            return true;
+        }
+    },
+    {
+        title: "Quel est votre âge ?",
+        number: "13/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let age = document.getElementById("answer").value;
+            if (age > 15 && age < 110) {
+                this.answer = age;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ton age doit être entre 15 et 110";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Quel est votre poids ?",
+        number: "14/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let poid = document.getElementById("answer").value;
+            if (poid > 20 && poid < 250) {
+                this.answer = poid;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ton poids doit être entre 20 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Quelle est votre taille ?",
+        number: "15/24",
+        type: "number",
+        answer: null,
+        getAnswer: function() {
+            let taille = document.getElementById("answer").value;
+            if (taille > 80 && taille < 250) {
+                this.answer = taille;
+                return true;
+            } else {
+                document.getElementById('errors').innerHTML = "Ta taille doit être entre 80 et 250";
+                return false;
+            }
+
+        }
+    },
+    {
+        title: "Avez-vous de l’hypertension artérielle ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?",
+        number: "16/24",
+        type: "radio",
+        options: ['Oui', 'Non', 'Ne sait pas'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Êtes-vous diabétique ?",
+        number: "17/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous ou avez-vous eu un cancer ?",
+        number: "18/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?",
+        number: "19/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
+            return true;
+        }
+    },
+    {
+        title: "Avez-vous une insuffisance rénale chronique dialysée ?",
+        number: "20/24",
+        type: "radio",
+        options: ['Oui', 'Non'],
+        answer: null,
+        getAnswer: function() {
+            this.answer = document.querySelector('input[name="answer"]:checked').value;
             return true;
         }
     },
@@ -141,9 +291,31 @@ var questions = [{
     }
 ];
 
+function startSurvey() {
+    document.getElementById(0).style.display = 'none';
+    document.getElementById(1).style.display = 'block';
+    document.getElementById("barnum").innerText = questions[index].number;
+    document.getElementById("barval").style.width = "4.2%";
+}
 
+function next() {
+    // document.getElementById('errors').innerText = "";
+    if (questions[index].getAnswer()) {
+        index++;
+        if (index < questions.length) {
+            // document.getElementById('btnPrv').disabled = false;
+            document.getElementById("barnum").innerText = questions[index].number;
+            document.getElementById("barval").style.width = ((index + 1) * 4.2) + "%";
+            document.getElementById("title").innerText = questions[index].title;
+            generateForm(index);
+            if (index == questions.length - 1) {
+                resBtn.style.display = "block";
+                document.querySelector("#s1").style.display = "none";
+            }
 
-
+        }
+    }
+}
 
 
 document.getElementById("title").innerText = questions[index].title;
@@ -155,17 +327,37 @@ function generateForm(index) {
 
     form.innerHTML = '';
     switch (question.type) {
-        case "number":
+        case "radio":
+            {
+
+                for (let i = 0; i < question.options.length; i++) {
+
+                    let radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.id = "radio-" + i;
+                    radio.name = "answer";
+                    radio.value = question.options[i];
+                    const label = document.createElement('label');
+                    label.setAttribute("for", "radio-" + i);
+                    label.textContent = question.options[i];
+
+                    form.appendChild(radio);
+                    form.appendChild(label);
+                    if (question.options[i] == question.answer) {
+                        radio.checked = true;
+                    }
+                }
+            }
+            break;
+        case "text":
             {
                 let input = document.createElement("input");
-                input.type = 'number';
+                input.type = 'text';
                 input.id = 'answer';
                 input.value = question.answer;
                 form.appendChild(input);
             }
             break;
-
-
 
         default:
             break;
