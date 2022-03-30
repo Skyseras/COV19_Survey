@@ -349,6 +349,15 @@ function generateForm(index) {
                 }
             }
             break;
+        case "number":
+            {
+                let input = document.createElement("input");
+                input.type = 'number';
+                input.id = 'answer';
+                input.value = question.answer;
+                form.appendChild(input);
+            }
+            break;
         case "text":
             {
                 let input = document.createElement("input");
