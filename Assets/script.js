@@ -453,7 +453,7 @@ const results = () => {
 
 
 
-    
+
     if (age < 15) {
         document.getElementById("textresult").innerText = 'Prenez contact avec votre médecin généraliste au moindre doute.'
         document.getElementById("textresult2").innerText = 'Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
@@ -483,7 +483,23 @@ const results = () => {
         }
     }
     // Tout patient avec fièvre et toux :
-
+    else if ((questions[1].answer >= 39 || questions[1].answer <= 35) && (questions[2].answer == 'Oui')) {
+        if (deuxplusfacGravmin == 0 && facGravMaj == 0) {
+            document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+            document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        } else if (sansfacpro == 0) {
+            if (deuxplusfacGravmin > 0) {
+                document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
+                document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141.'
+            } else {
+                document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+                document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+            }
+        } else if (facGravMaj > 0) {
+            document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
+            document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141.'
+        }
+    }
     //Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures :
 
     //Tout patient avec aucun symptôme :
