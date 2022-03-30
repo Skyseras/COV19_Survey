@@ -26,13 +26,13 @@
         </nav>
     </div>
     <div class="d-flex justify-content-around align-items-center my-4 mx-5">
-        <div><button type="button " class="btn btn-sm rounded-pill" style="background-color: #88b7d3; width: 50px; height: 50px;"><div class="d-flex justify-content-center align-items-center"><div class="cercle"></div></div></button>
+        <div><button id="info" type="button " class="btn btn-sm rounded-pill" style="background-color: #88b7d3; width: 50px; height: 50px;"><div class="d-flex justify-content-center align-items-center"><div class="cercle"></div></div></button>
             <h5 style="color: #1078AD; font-weight: 700;">Informations</h5>
         </div>
-        <div><button type="button " class="btn btn-sm rounded-pill mb-3" style="background-color: #1078AD; width: 25px; height: 25px;"></button>
+        <div><button id="quest" type="button " class="btn btn-sm rounded-pill mb-3" style="background-color: #1078AD; width: 25px; height: 25px;"></button>
             <h5 style="color: #1078AD; font-weight: 700;">Questionnaire</h5>
         </div>
-        <div><button type="button " class="btn btn-sm rounded-pill mb-3" style="background-color: #1078AD; width: 25px; height: 25px;"></button>
+        <div><button id="resu" type="button " class="btn btn-sm rounded-pill mb-3" style="background-color: #1078AD; width: 25px; height: 25px;"></button>
             <h5 style="color: #1078AD; font-weight: 700;">Résultats</h5>
         </div>
     </div>
@@ -64,38 +64,36 @@
                 <div id="barval" class="progress-bar " role="progressbar " aria-valuemin="0 " aria="100 "></div>
             </div>
         </div>
-        <div class="d-flex justify-content-center align-items-center mt-5 px-3 fs-3 fw-bold text-secondary ">
+        <div class="d-flex justify-content-center align-items-center mt-5 px-3 pb-5 fs-3 fw-bold text-secondary ">
             <p id="title"></p>
         </div>
-        <div id="form" class="d-flex justify-content-center">
-            <!-- <div class="w-50 d-flex mt-5 justify-content-around ">
-                <div>
-                    <input type="checkbox" name="f" class="btn-check" id="btn-non" />
-                    <label class="btn bg-white p-3 border border-primary border-2 rounded text-primary btn-primary" for="btn-non">Non</label>
-                </div>
-                <div>
-                    <input type="checkbox" class="btn-check" id="btn-oui" />
-                    <label class="btn bg-white p-3 border border-primary border-2 rounded text-primary btn-primary" for="btn-oui">Oui</label>
-                </div>
-            </div> -->
+        <div class="d-flex justify-content-center">
+            <div id="form" class="w-50 d-flex justify-content-around">
+
+            </div>
         </div>
-        <div id="navBtn" class="d-flex align-items-end justify-content-end ">
+        <div id="navBtn" style="width: 96%; height: 100px;" class="d-flex align-items-end justify-content-end ">
             <button id="s1" class="p-1 me-2 border border-primary border-2 rounded text-primary" onclick="next()">suivant</button>
             <button onclick="results();" id="show-res-btn" class="p-1 me-2 border border-primary border-2 rounded text-primary">Terminer le test</button>
         </div>
+        <div style="height: 50px;"></div>
     </div>
 
-    <div id="pasbien" style="display: none;" class="form-signin ">
-        <h1 style="margin-top: 80px; color: #026534; ">Ta santé n'est pas bonne</h1>
+
+
+
+
+    <div id="resultats-test" style="display: none;" class="form-signin ">
         <form class="one h-auto " style="margin-top: 30px; ">
-            <h3 style="color:white; " class="fw-bold ">Résultats</h3><br> <br>
-            <h5 style="color: #F4CF1B; ">Restez à la maison et essayez de vous mêler aux gens, car les personnes qui ont le virus ne présentent pas de symptômes de la maladie. </h5>
-
+            <h3 style="color:#1078AD; " class="fw-bold ">Résultats</h3><br>
+            <h1 id="textresult" style="color: #026534; "></h1><br>
+            <h5 id="textresult2" style="color: black; ">Restez à la maison et essayez de vous mêler aux gens, car les personnes qui ont le virus ne présentent pas de symptômes de la maladie. </h5>
         </form>
-        <button type="submit " class="btn " style="background-color: #1078AD; color: white; ">Recommencer le
-                    test</button>
-
+        <div class="start">
+            <a href="survey.html"><button type="button " class="fs-4 fw-bold text-covid " s style="width: 250px;">Recommencer le test</button></a>
+        </div>
     </div>
+    <div id="resultatquestions"></div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js " integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB " crossorigin="anonymous "></script>
