@@ -20,11 +20,10 @@ var questions = [{
         answer: null,
         getAnswer: function() {
             let temp = document.getElementById("answer").value;
-            if (temp > 35 && temp < 39) {
+            if (temp > 30 && temp < 45) {
                 this.answer = temp;
                 return true;
             } else {
-                document.getElementById('errors').innerHTML = "Ta température doit être entre 35°C et 39°C";
                 return false;
             }
 
@@ -146,14 +145,10 @@ var questions = [{
         answer: null,
         getAnswer: function() {
             let age = document.getElementById("answer").value;
-            if (age > 15 && age < 110) {
+            if (age > 8 && age < 110) {
                 this.answer = age;
                 return true;
-            } else {
-                document.getElementById('errors').innerHTML = "Ton age doit être entre 15 et 110";
-                return false;
             }
-
         }
     },
     {
@@ -167,7 +162,6 @@ var questions = [{
                 this.answer = poid;
                 return true;
             } else {
-                document.getElementById('errors').innerHTML = "Ton poids doit être entre 20 et 250";
                 return false;
             }
 
@@ -184,7 +178,6 @@ var questions = [{
                 this.answer = taille;
                 return true;
             } else {
-                document.getElementById('errors').innerHTML = "Ta taille doit être entre 80 et 250";
                 return false;
             }
 
@@ -279,7 +272,7 @@ var questions = [{
         }
     },
     {
-        title: "Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.Voici quelques exemples: corticoïdes, méthotrexate,ciclosporine, tacrolimus, azathioprine,cyclophosphamide(liste non exhaustive).",
+        title: "Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.",
         number: "24/24",
         type: "radio",
         options: ['Oui', 'Non', 'Ne sait pas'],
@@ -296,6 +289,18 @@ function startSurvey() {
     document.getElementById(1).style.display = 'block';
     document.getElementById("barnum").innerText = questions[index].number;
     document.getElementById("barval").style.width = "4.2%";
+    document.getElementById("quest").innerHTML = '<div class="d-flex justify-content-center align-items-center"><div class="cercle"></div></div>';
+    document.getElementById("quest").classList.remove('mb-3');
+    document.getElementById("quest").style.backgroundColor = '#88b7d3';
+    document.getElementById("quest").style.width = '50px';
+    document.getElementById("quest").style.height = '50px';
+
+    document.getElementById("info").innerHTML = '';
+    document.getElementById("info").classList.add('mb-3');
+    document.getElementById("info").style.backgroundColor = '#1078AD';
+    document.getElementById("info").style.width = '25px';
+    document.getElementById("info").style.height = '25px';
+
 }
 
 function next() {
@@ -336,9 +341,11 @@ function generateForm(index) {
                     radio.type = "radio";
                     radio.id = "radio-" + i;
                     radio.name = "answer";
+                    radio.classList = "btn-check";
                     radio.value = question.options[i];
                     const label = document.createElement('label');
                     label.setAttribute("for", "radio-" + i);
+                    label.classList = "btn bg-white p-3 border border-primary border-2 rounded text-primary btn-primary";
                     label.textContent = question.options[i];
 
                     form.appendChild(radio);
@@ -375,36 +382,65 @@ function generateForm(index) {
 
 
 
-
 const results = () => {
+    let nonefacGrav = 0;
+    let facGravMaj = 0;
+    let facGravmin = 0;
+    let unfacGravmaj = 0;
+    let unfacGravmin = 0;
+    let deuxplusfacGravmaj = 0;
+    let deuxplusfacGravmin = 0;
+    let fievre = 0;
+
+    let sansfacpro = 0;
+    let age = questions[13].answer;
+
+    // abdo
+
+
+
+
+
+
+    // style
+    document.getElementById("resu").innerHTML = '<div class="d-flex justify-content-center align-items-center"><div class="cercle"></div></div>';
+    document.getElementById("resu").classList.remove('mb-3');
+    document.getElementById("resu").style.backgroundColor = '#88b7d3';
+    document.getElementById("resu").style.width = '50px';
+    document.getElementById("resu").style.height = '50px';
+
+    document.getElementById("quest").innerHTML = '';
+    document.getElementById("quest").classList.add('mb-3');
+    document.getElementById("quest").style.backgroundColor = '#1078AD';
+    document.getElementById("quest").style.width = '25px';
+    document.getElementById("quest").style.height = '25px';
+
+
+
+    // add last question
     questions[questions.length - 1].getAnswer();
     let results = '';
     for (let i = 0; i < questions.length; i++) {
         results += questions[i].title + ': ' + questions[i].answer + '<br>';
     }
-    document.getElementById("form").innerHTML = results;
+    document.getElementById("1").style.display = 'none';
+    document.getElementById("resultats-test").style.display = 'block';
+    document.getElementById("resultatquestions").innerHTML = results;
 
 
 
 
+    //hatim
 
+    // Patient avec fièvre, ou toux + mal de gorge, ou toux + courbatures ou fièvre + diarrhée :
 
+    // Tout patient avec fièvre et toux :
 
+    //Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures :
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //Tout patient avec aucun symptôme :
+    else if (nonefacGrav > 0 && sansfacpro > 0) {
+        document.getElementById("textresult").innerText = 'Votre santé est bonne.'
+        document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.s'
+    }
 }
