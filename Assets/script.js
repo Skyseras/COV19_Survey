@@ -460,7 +460,28 @@ const results = () => {
     }
 
     // Patient avec fièvre, ou toux + mal de gorge, ou toux + courbatures ou fièvre + diarrhée :
-
+    else if (questions[1].answer >= 39 || questions[1].answer <= 35 || (questions[2].answer == 'Oui' && questions[4].answer == 'Oui') || (questions[2].answer == 'Oui' && questions[3].answer == 'Oui') || (questions[1].answer == 'Oui' && questions[5].answer == 'Oui')) {
+        if (sansfacpro > 0) {
+            if (nonefacGrav > 0 && age < 50 && age >= 15) {
+                document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+                document.getElementById("textresult2").innerText = 'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+            } else if (facGravmin > 0 && age >= 50 && age <= 69) {
+                document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+                document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+            }
+        } else if (sansfacpro == 0) {
+            if (deuxplusfacGravmin > 0) {
+                document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
+                document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141.'
+            } else {
+                document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+                document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+            }
+        } else if (facGravMaj > 0) {
+            document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
+            document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        }
+    }
     // Tout patient avec fièvre et toux :
 
     //Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures :
