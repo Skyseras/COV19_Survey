@@ -305,11 +305,9 @@ function startSurvey() {
 }
 
 function next() {
-    // document.getElementById('errors').innerText = "";
     if (questions[index].getAnswer()) {
         index++;
         if (index < questions.length) {
-            // document.getElementById('btnPrv').disabled = false;
             document.getElementById("barnum").innerText = questions[index].number;
             document.getElementById("barval").style.width = ((index + 1) * 4.2) + "%";
             document.getElementById("title").innerText = questions[index].title;
@@ -467,7 +465,7 @@ const results = () => {
 
 
     // Patient avec fièvre, ou toux + mal de gorge, ou toux + courbatures ou fièvre + diarrhée :
-    if (questions[1].answer >= 39 || questions[1].answer <= 35 || (questions[2].answer == 'Oui' && questions[4].answer == 'Oui') || (questions[2].answer == 'Oui' && questions[3].answer == 'Oui') || (questions[1].answer == 'Oui' && questions[5].answer == 'Oui')) {
+    else if (fievre > 0 || (questions[2].answer == 'Oui' && questions[4].answer == 'Oui') || (questions[2].answer == 'Oui' && questions[3].answer == 'Oui') || (questions[1].answer == 'Oui' && questions[5].answer == 'Oui')) {
         if (sansfacpro > 0) {
             if (nonefacGrav > 0 && age < 50 && age >= 15) {
                 document.getElementById("textresult").innerText = 'Rester à votre domicile.'
@@ -476,8 +474,8 @@ const results = () => {
                 document.getElementById("textresult").innerText = 'Rester à votre domicile.'
                 document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
             } else {
-                document.getElementById("textresult").innerText = 'Votre santé est bonne.'
-                document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+                document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+                document.getElementById("textresult2").innerText = 'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
             }
         } else if (sansfacpro == 0) {
             if (deuxplusfacGravmin > 0) {
@@ -490,16 +488,13 @@ const results = () => {
         } else if (facGravMaj > 0) {
             document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
             document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
-        } else {
-            document.getElementById("textresult").innerText = 'Votre santé est bonne.'
-            document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
         }
     }
 
 
 
     // Tout patient avec fièvre et toux :
-    if ((questions[1].answer >= 39 || questions[1].answer <= 35) && (questions[2].answer == 'Oui')) {
+    else if (fievre > 0 && (questions[2].answer == 'Oui')) {
         if (deuxplusfacGravmin == 0 && facGravMaj == 0) {
             document.getElementById("textresult").innerText = 'Rester à votre domicile.'
             document.getElementById("textresult2").innerText = 'Téléconsultation ou médecin généraliste ou visite à domicile. “appelez le 141 si une gêne respiratoire ou des difficultésimportantes pours’alimenter ou boire pendant plus de 24h apparaissent.” Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
@@ -514,36 +509,30 @@ const results = () => {
         } else if (facGravMaj > 0) {
             document.getElementById("textresult").innerText = 'Appelez 141 tout de suite.'
             document.getElementById("textresult2").innerText = 'Rester à votre domicile et appelez 141.'
-        } else {
-            document.getElementById("textresult").innerText = 'Votre santé est bonne.'
-            document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
         }
     }
 
 
 
     //Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures :
-    if ((fievre > 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer == 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer == 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer == 'Oui')) {
+    else if ((fievre > 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer == 'Oui' && questions[4].answer != 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer == 'Oui' && questions[3].answer != 'Oui') || (fievre == 0 && questions[2].answer != 'Oui' && questions[4].answer != 'Oui' && questions[3].answer == 'Oui')) {
         if (nonefacGrav > 0) {
             document.getElementById("textresult").innerText = 'Votre santé est bonne.'
             document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
         } else if ((unfacGravmaj > 0 && unfacGravmin == 0 && sansfacpro > 0) || (unfacGravmaj == 0 && unfacGravmin > 0 && sansfacpro > 0) || (unfacGravmaj == 0 && unfacGravmin == 0 && sansfacpro == 0)) {
             document.getElementById("textresult").innerText = 'Pas de covid-19.'
             document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 141. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
-        } else {
-            document.getElementById("textresult").innerText = 'Votre santé est bonne.'
-            document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
         }
     }
 
 
 
     //Tout patient avec aucun symptôme :
-    if (nonefacGrav > 0 && sansfacpro > 0) {
+    else if (nonefacGrav > 0 && sansfacpro > 0) {
         document.getElementById("textresult").innerText = 'Votre santé est bonne.'
         document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.s'
     } else {
-        document.getElementById("textresult").innerText = 'Votre santé est bonne.'
-        document.getElementById("textresult2").innerText = 'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        document.getElementById("textresult").innerText = 'Rester à votre domicile.'
+        document.getElementById("textresult2").innerText = 'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes. Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
     }
 }
